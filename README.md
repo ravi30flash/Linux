@@ -1,0 +1,2 @@
+# Linux
+notes about linux 
