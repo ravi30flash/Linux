@@ -7,10 +7,6 @@
 
 * **-f** : this options Reads  the  AWK  program source the file program-file, instead of the first command line argument.    Multiple -f (or --file) options maused
 ---
-
-* **-i** : this options edit the file content in place, where it has been saved
----
-
 * **-e** : this option will run the inline code with awk
 ---
 
