@@ -155,7 +155,200 @@ text
 
     * File/Dir to Dir:  
         \# cp -rfv srcFile/Dir dstDir
+---
 
+`echo "MSG"` : Print the msg on screen  
+`ls -a`	:	Show all/Hidden files/Dirs
+
+`mkdir .dirname`	: Hidden dir  
+`touch .filename`	: Hidden file
+
+`history`	: To show the history  
+* ![history_index_number]  
+* `!2000`	: Exe history index number
+
+`history -c` : Clear/Clean the history
+
+`tty`: Print/show th console identity
+
+\# `echo "Hello" > /dev/tty1`
+
+ENV variable[SYSTEM Variable]  Check:  
+### Environment variables 
+
+Print:
+
+`echo $SHELL`  
+`history`
+
+`echo $HISTSIZE`  
+Output : 1000
+
+change the value of env variables but for current working env:
+
+---
+export HISTSIZE=0
+
+\# `cd /root/`  
+\# `ls -a`  
+`.bash_history`  
+____
+
+\# `echo $HISTTIMEFORMAT`
+
+    %d : Day
+    %m : month
+    %y : year
+    %T : Timestamp
+
+\# `export HISTTIMEFORMAT="%d-%m-%y %T"`
+
+
+# Day 3: User Management
 ```
+user related info:
+# cat /etc/passwd
+    hunt:x:1000:1000:,,,:/home/hunt:/bin/bash
 
+Password info:
+# cat /etc/shadow
+    hunt:Encrypted pass:Acc Age
+
+SHA512 + Salt Algo
+UID [0-60000]     | GID [0-60000]
+0-999 Super user  | 0-999 Super group
+1000+ Regular user| 1000+ regular group
+
+Group info:
+# cat /etc/group
+    grp:x:GID
+
+Group pass:
+# cat /etc/gshadow
+
+1) Add user:
+    # adduser username
+check:
+    # id username
+
+2) Password:
+    # passwd username
+    # passwd -d username 
+    -d : delete
+
+3) Login:
+    # su - username
+        # exit
+        OR
+        # logout
+
+4) Delete user:
+    a) without home dir
+        # userdel username
+
+    b) with home dir
+        # userdel -r username
+
+Groups: 
+1) Add group:
+    # groupadd groupname
+
+2) Password:
+    # gpasswd groupname
+
+3) Delete:
+    # groupdel groupname
+
+
+Memberships:
+a) Primary
+
+    add user as primary member of a group:
+    # groupadd grp
+    # useradd -g grp u1
+        -g: Primary membership
+
+b) Secondary
+
+    i) add user as secondary member of a group:
+    # groupadd lol
+    # useradd -G lol pipi
+    -G: secondary member
+
+    ii) Add an existing user in a group as secondary member:
+
+    # usermod -G grp natasha
+
+Permissions:
+1) Symbolic Method
+
+    read    : r  
+    write	: w  
+    execute	: x  
+
+    user owner	: u  
+    group owner	: g  
+    others  : o  
+    All : a  
+
+    Assign		: +  
+    Remove		: -  
+    Overwrite	: =  
+
+Permission Area:
+# ls -l
+    drwxr-xr-x  2 root  root   6 Mar 22 17:47 kids
+    rwx     |   r-x     |	r-x
+    u		|	g		|  	o
+
+Default perm for file:
+read & write : u
+read		 : g
+read		 : o
+
+Default perm for dir:
+read, write & execute : u
+read & execute		  : g
+read & execute		  : o
+
+
+File Type:
+
+    Regular file  	[-]
+    Dir				[d]
+    block			[b]
+    char			[c]
+    pipe OR Socket	[p OR s]
+    link			[l]
+
+Assign perm using Symbolic method:
+    # chmod u+xwr file/dir
+
+    # chmod u+w,u-x file/dir
+
+    # chmod u+rw,g=w,o-rwx file/dir
+
+    # chmod a=w  file/dir
+    OR
+    # chmod ugo+rw file/dir
+    OR
+    # chmod +w file/dir
+
+2) Numeric Method
+    read	: 4
+    write	: 2
+    execute	: 1
+    Full	: 7
+    No		: 0
+    
+    ---		000		0
+    r--		100		4
+    -w-		010		2
+    --x		001		1
+    rwx		111		7
+    
+
+# chmod 517 file/dir
+	    u:g:o
+```
 
