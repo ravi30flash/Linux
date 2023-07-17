@@ -291,23 +291,23 @@ Permissions:
     others  : o  
     All : a  
 
-    Assign		: +  
-    Remove		: -  
+    Assign	: +  
+    Remove	: -  
     Overwrite	: =  
 
 Permission Area:
 # ls -l
     drwxr-xr-x  2 root  root   6 Mar 22 17:47 kids
     rwx     |   r-x     |	r-x
-    u		|	g		|  	o
+    u	    |	g	|  	o
 
 Default perm for file:
-read & write : u
+read & write 	 : u
 read		 : g
 read		 : o
 
 Default perm for dir:
-read, write & execute : u
+read, write & execute 	  : u
 read & execute		  : g
 read & execute		  : o
 
@@ -315,11 +315,11 @@ read & execute		  : o
 File Type:
 
     Regular file  	[-]
-    Dir				[d]
-    block			[b]
-    char			[c]
+    Dir			[d]
+    block		[b]
+    char		[c]
     pipe OR Socket	[p OR s]
-    link			[l]
+    link		[l]
 
 Assign perm using Symbolic method:
     # chmod u+xwr file/dir
@@ -349,6 +349,6 @@ Assign perm using Symbolic method:
     
 
 # chmod 517 file/dir
-	    u:g:o
+	u:g:o
 ```
 
